@@ -1,3 +1,4 @@
+import os
 from flask import Flask,render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -55,5 +56,6 @@ def update(SNo):
     return render_template('update.html', todo=todo)
 
 if __name__ == "__main__":
-    
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 5000))  # Default to port 5000 for local development
+    app.run(host="0.0.0.0", port=port)
+
